@@ -53,7 +53,7 @@
                 <ul class="text-xs border-t-2 border-screen pt-1">
                     <li v-for="task in smallTasks" :key="task.id">
                         <p class="truncate" :data-id="task.id">
-                            {{ task.project }} <span v-if="task.name" class="text-dimmed"><b>{{ upperFirst(task.name) }}</b></span>
+                            {{ task.project }} <span v-if="task.name" class="text-dimmed">{{ upperFirst(task.name) }}</span>
                         </p>
                     </li>
                 </ul>

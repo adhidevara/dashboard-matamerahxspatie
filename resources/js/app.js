@@ -2,10 +2,10 @@ import './bootstrap.js';
 
 import Echo from 'laravel-echo';
 import Vue from 'vue';
-
 import Dashboard from './components/Dashboard';
 import Calendar from './components/Calendar';
-import Statistics from './components/Statistics';
+import StatisticsMoota from './components/StatisticsMoota';
+import StatisticsAmalSholeh from './components/StatisticsAmalSholeh';
 import InternetConnection from './components/InternetConnection';
 import TeamMember from './components/TeamMember';
 import TimeWeather from './components/TimeWeather';
@@ -21,7 +21,8 @@ new Vue({
     components: {
         Dashboard,
         Calendar,
-        Statistics,
+        StatisticsMoota,
+        StatisticsAmalSholeh,
         InternetConnection,
         TeamMember,
         TimeWeather,

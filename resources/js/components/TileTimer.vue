@@ -13,6 +13,10 @@ export default {
             type: String,
             default: 'HH:mm',
         },
+        task:{
+            type: String,
+            
+        }
     },
 
     data() {
