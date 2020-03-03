@@ -5,7 +5,6 @@ namespace App\Services\Trello;
 use App\Services\Trello\DataTransferObjects\Members;
 use App\Services\Trello\DataTransferObjects\Cards;
 use GuzzleHttp\Client;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use function GuzzleHttp\json_decode;
 
@@ -19,10 +18,29 @@ class TrelloApi
         $this->client = $client;
     }
 
+    public function getAll(array $names): Collection
+    {
+        $members = $this->getMember()->keyBy('username');
+        $tasks = $this->getLists();
+
+        return collect($names)
+            ->map(function (string $name) use ($members) {
+                return $members->get($name);
+            })
+            ->filter()
+            ->mapWithKeys(function (Members $members) use ($tasks) {
+                return [
+                    $members->username => $tasks
+                        ->where('person_id', $members->id)
+                        ->values()
+                        ->map->toArray(),
+                ];
+            });
+    }
+
     public function getMember(): Collection
     {
         $response = $this->client->get('boards/'.config('services.trello.board_id').'/members');
-
         $members = json_decode($response->getBody(), true);
 
         return collect($members)
@@ -31,19 +49,12 @@ class TrelloApi
             });
     }
 
-    public function getCard(array $name): Collection
+    public function getLists(): Collection
     {
-        $id_member = $this->getMember()->keyBy('name');
+        $response = $this->client->get('lists/'.config('services.trello.list_id').'/cards');
+        $lists = json_decode($response->getBody(), true);
 
-        $id_member = collect($name)
-            ->map(function (string $name) use ($id_member) {
-                return $id_member->get($name);
-            });
-
-        $response = $this->client->get('members/'.$id_member[0]->id.'/cards');
-        $cards = json_decode($response->getBody(), true);
-
-        return collect($cards)
+        return collect($lists)
             ->map(function (array $attributes) {
                 return Cards::fromTrelloAttributes($attributes);
             });

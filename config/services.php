@@ -43,6 +43,7 @@ return [
         'api-key' => env('TRELLO_API_KEY'),
         'token' => env('TRELLO_TOKEN'),
         'board_id' => env('TRELLO_BOARD_ID'),
+        'list_id' => env('TRELLO_LIST_ID'),
         'member' => env('TRELLO_PEOPLE')
     ],
 

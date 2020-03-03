@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Components\Statistics\FetchStatisticMoota;
 use App\Console\Components\TeamMember\FetchTasksTrello;
 use Illuminate\Console\Scheduling\Schedule;
 use App\Console\Components\Trains\FetchTrainsCommand;
@@ -36,6 +37,8 @@ class Kernel extends ConsoleKernel
 
         //CUSTOM
         $schedule->command(FetchTasksTrello::class)->everyFiveMinutes();
+        $schedule->command(FetchStatisticMoota::class)->everyFiveMinutes();
+        $schedule->command(FetchStatisticAmalSholeh::class)->everyFiveMinutes();
     }
 
     public function commands()

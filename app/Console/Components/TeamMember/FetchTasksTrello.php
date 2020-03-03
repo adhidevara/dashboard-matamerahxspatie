@@ -16,7 +16,7 @@ class FetchTasksTrello extends Command
     {
         $this->info('Fetching tasks from Trello...');
 
-        $members = $trello->getCard(
+        $members = $trello->getAll(
             explode(',', config('services.trello.member'))
         );
         event(new TasksFetched($members->toArray()));

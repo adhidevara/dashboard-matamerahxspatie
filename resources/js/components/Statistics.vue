@@ -1,6 +1,16 @@
 <template>
     <tile :position="position">
         <div class="grid gap-padding h-full markup">
+            <div class="grid gap-2 items-center w-full bg-tile z-10" style="grid-template-columns: auto 1fr">
+                <div>
+                    <avatar :src="avatar" />
+                </div>
+                <div class="leading-tight min-w-0">
+                    <h2 class="truncate capitalize">
+                        Moota
+                    </h2>
+                </div>
+            </div>
             <ul class="align-self-center">
                 <li>
                     <span>Nama Aplikasi</span>
@@ -35,17 +45,19 @@
 <script>
 import { emoji, formatNumber } from '../helpers';
 import echo from '../mixins/echo';
+import Avatar from './atoms/Avatar';
 import Tile from './atoms/Tile';
 import saveState from 'vue-save-state';
 
 export default {
     components: {
+        Avatar,
         Tile,
     },
 
     mixins: [echo, saveState],
 
-    props: ['position'],
+    props: ['position', 'avatar'],
 
     data() {
         return {
@@ -63,18 +75,19 @@ export default {
         formatNumber,
 
         getEventHandlers() {
-            return {
-                'Statistics.GitHubTotalsFetched': response => {
-                    this.githubStars = response.stars;
-                    this.githubIssues = response.issues;
-                    this.githubPullRequests = response.pullRequests;
-                    this.githubContributors = response.contributors;
-                },
 
-                'Statistics.PackagistTotalsFetched': response => {
-                    this.packagistTotal = response.total;
-                    this.packagistMonthly = response.monthly;
+            return {
+                'Moota.StatsFetched': response => {
+                    this.githubStars = response.stats.total_user;
+                    this.githubIssues = response.stats.user_this_month;
+                    this.githubPullRequests = response.stats.user_active;
+                    this.githubContributors = response.stats.total_bank_account;
+                    this.packagistTotal = response.stats.bank_account_this_month;
+                    this.packagistMonthly = response.stats.total_account_deleted;
                 },
+                // 'Statistics.PackagistTotalsFetched': response => {
+                //
+                // },
             };
         },
 
