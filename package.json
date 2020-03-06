@@ -23,6 +23,7 @@
     "twemoji": "^11.2",
     "vue": "^2.0.1",
     "vue-save-state": "^1.1.0",
+    "vue2-smooth-scroll": "^1.2.0",
     "yarn": "^1.22.0"
   },
   "devDependencies": {

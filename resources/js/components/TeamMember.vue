@@ -36,8 +36,9 @@
                     </component>
                 </div>
             </div>
+<!--            <a href="#div-id" v-smooth-scroll="{ duration: 500, offset: 0, container: '#div-id', updateHistory: true }">Anchord</a>-->
             <div class="align-self-center" v-if="tasks.length">
-                <ul>
+                <ul id="div-id">
                     <li v-for="task in largeTasks" :key="task.id">
                         <div class="truncate">
                             <p class="truncate">
@@ -50,13 +51,16 @@
                         <p class="ml-2 font-bold variant-tabular">{{ task.formatted_time }}</p>
                     </li>
                 </ul>
+                <marquee behavior="scroll" direction="up" height="100%" scrolldelay="300">
                 <ul class="text-xs border-t-2 border-screen pt-1">
                     <li v-for="task in smallTasks" :key="task.id">
-                        <p class="truncate" :data-id="task.id">
+                        <p class="truncate" :data-id="task.id"><b>
                             {{ task.project }} <span v-if="task.name" class="text-dimmed">{{ upperFirst(task.name) }}</span>
+                        </b>
                         </p>
                     </li>
                 </ul>
+                </marquee>
             </div>
         </div>
     </tile>
@@ -70,11 +74,13 @@ import Tile from './atoms/Tile';
 import saveState from 'vue-save-state';
 import moment from 'moment';
 import { upperFirst, lowerFirst } from 'lodash';
+import vueSmoothScroll from 'vue2-smooth-scroll';
 
 export default {
     components: {
         Avatar,
         Tile,
+        vueSmoothScroll
     },
 
     mixins: [echo, saveState],
