@@ -52,7 +52,7 @@
                     </li>
                 </ul>
                 <marquee behavior="scroll" direction="up" height="100%" scrolldelay="300">
-                <ul class="text-xs border-t-2 border-screen pt-1">
+                <ul class="text-base border-t-2 border-screen pt-1">
                     <li v-for="task in smallTasks" :key="task.id">
                         <p class="truncate" :data-id="task.id"><b>
                             {{ task.project }} <span v-if="task.name" class="text-dimmed">{{ upperFirst(task.name) }}</span>

@@ -6,6 +6,7 @@
     --text-invers: rgba(255, 255, 255, 0.9);
     --text-accent: rgba(25, 71, 147, 0.9);
     --text-danger: rgba(234, 15, 65, 0.9);
+    --text-size: text-base;
 
     --bg-screen: rgb(255, 255, 255);
     --bg-tile: rgb(222, 31, 38);
@@ -36,6 +37,11 @@
     --text-default-amalSholeh: rgba(107, 235, 90, 1);
     --tile-spacing: 0.5rem;
     --tile-padding: 1rem;
+
+    --text-dimmed-teamMember: rgba(255, 255, 255, 1);
+    --text-invers-teamMember: rgba(255, 255, 255, 1);
+    --text-accent-teamMember: rgba(255, 255, 255, 1);
+
 }
 
 .dark-mode {
@@ -48,6 +54,14 @@
     --bg-tile: var(--bg-tile-dark);
     --bg-warn: var(--bg-warn-dark);
     --bg-error: var(--bg-error-dark);
+}
+
+.team-member-mode{
+    --text-default: var(--text-default);
+    --text-dimmed: var(--text-dimmed-teamMember);
+    --text-invers: var(--text-invers-teamMember);
+    --text-accent: var(--text-accent-teamMember);
+    --text-size: var(--text-size);
 }
 
 .amal-sholeh-mode {
