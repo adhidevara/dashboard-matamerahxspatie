@@ -5,7 +5,7 @@
 @javascript(compact('pusherKey', 'clientConnectionPath', 'environment', 'openWeatherMapKey'))
 <div id="dashboard">
     <dashboard class="font-sans bg-red-700">
-        <time-weather position="e1:e9" date-format="dddd, DD MMM YYYY" time-zone="Asia/Jakarta" weather-city="Bandung" location="Bandung"></time-weather>
+        <time-weather position="e1:e9" date-format="dddd, DD MMM YYYY" time-zone="Asia/Jakarta" weather-city="Malang" location="Bandung"></time-weather>
         <statistics-moota position="e10:e27" Avatar="https://i.ibb.co/9N70TnL/Slice-3.png"></statistics-moota>
         <statistics-amal-sholeh position="d10:d27" Avatar="https://i.ibb.co/d5qMK3d/Slice-4-1.png"></statistics-amal-sholeh>
         <team-member name="adhidevara" avatar="{{ gravatar('desevenfoldism2133@gmail.com') }}" birthday="1995-02-14" position="a1:a9"></team-member>

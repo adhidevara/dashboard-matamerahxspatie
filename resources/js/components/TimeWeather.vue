@@ -1,5 +1,5 @@
 <template>
-    <tile :position="position" no-fade>
+    <tile :position="position" no-fade class="team-member-mode">
         <div class="grid gap-2 justify-items-center h-full" style="grid-template-rows: auto 1fr auto;">
             <div class="markup">
                 <h2>{{ date }}</h2>

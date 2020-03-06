@@ -1,5 +1,5 @@
 <template>
-    <tile :position="position">
+    <tile :position="position" class="team-member-mode">
         <div
             class="grid gap-padding h-full markup"
             style="grid-template-columns: 100%"
@@ -51,7 +51,7 @@
                         <p class="ml-2 font-bold variant-tabular">{{ task.formatted_time }}</p>
                     </li>
                 </ul>
-                <marquee behavior="scroll" direction="up" height="100%" scrolldelay="300">
+                <marquee behavior="scroll" direction="up" height="100%" scrolldelay="300" width="100%">
                 <ul class="text-base border-t-2 border-screen pt-1">
                     <li v-for="task in smallTasks" :key="task.id">
                         <p class="truncate" :data-id="task.id"><b>
